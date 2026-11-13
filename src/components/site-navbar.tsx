@@ -8,8 +8,8 @@ import { SiteLogo } from "@/components/site-logo";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/explore-studios", label: "Explore Studios" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#about", label: "About Us" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#about", label: "About Us" },
 ] as const;
 
 const pillClasses = "h-9 rounded-full px-4 text-sm font-semibold";
