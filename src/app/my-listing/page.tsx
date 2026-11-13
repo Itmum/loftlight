@@ -1,3 +1,4 @@
+import DeleteStudioDialog from "@/components/deleteStudioDialog";
 import { StudioCard } from "@/components/studio-card";
 import { Button } from "@/components/ui/button";
 import { Studio } from "@/lib/studio";
@@ -7,7 +8,7 @@ import Link from "next/link";
 export default async function MyListingsPage() {
   const res = await fetch("http://localhost:8000/all-studios");
   const data = await res.json();
-  console.log(data);
+  //   console.log(data);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
@@ -88,12 +89,7 @@ export default async function MyListingsPage() {
                         </Link>
                       </Button>
 
-                      <Button
-                        size="sm"
-                        className="rounded-full bg-[#a34739] px-4 text-xs font-medium text-white hover:bg-[#a34739]/90"
-                      >
-                        Delete
-                      </Button>
+                      <DeleteStudioDialog id={studio._id}></DeleteStudioDialog>
                     </div>
                   </td>
                 </tr>
