@@ -1,24 +1,32 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { auth } from "./lib/auth";
-import { headers } from "next/headers";
+import { getSessionCookie } from "better-auth/cookies";
 
-// This function can be marked `async` if using `await` inside
-export async function proxy(request: NextRequest) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-  const user = session?.user;
-  if (!user) {
-    return NextResponse.redirect(new URL("/login", request.url));
+// Only asks: "is there a login cookie?" It never touches MongoDB, so it
+// can't fail because of a database connection. (It's a quick gate for the
+// pages. Your real security comes from the server checks you'll add later.)
+export function proxy(request: NextRequest) {
+  const sessionCookie = getSessionCookie(request);
+
+  if (!sessionCookie) {
+    // Send them to login, and bring them back to this page afterwards
+    const { pathname, search } = request.nextUrl;
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("redirect", pathname + search);
+    return NextResponse.redirect(loginUrl);
   }
-  // const user = session?.user;
-  //
+
+  return NextResponse.next();
 }
 
-// Alternatively, you can use a default export:
-// export default function proxy(request: NextRequest) { ... }
-
+// Only your private pages. Don't add /login or /signup here (redirect loop).
+// Don't add /studios/... either: studio details should be public.
 export const config = {
-  matcher: ["/add-studio", "/my-booking", "/my-listing", "/studios/:path"],
+  matcher: [
+    "/add-studio",
+    "/my-booking",
+    "/my-listing",
+    "/update-studio/:path*",
+    "/dashboard",
+  ],
 };
