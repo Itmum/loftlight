@@ -23,15 +23,13 @@
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
-import { attachDatabasePool } from "@vercel/functions";
 
 // Created once, at the top of the file, so warm server instances reuse it.
 const client = new MongoClient(process.env.MONGODB_URI as string, {
   maxPoolSize: 5, // small pool: free Atlas clusters have a connection limit
-  serverSelectionTimeoutMS: 10000, // wait up to 10s before giving up
+  maxIdleTimeMS: 5000,
+  serverSelectionTimeoutMS: 10000,
 });
-// Tells Vercel to close idle connections before it pauses the server
-attachDatabasePool(client);
 
 export const db = client.db("loftlight");
 
