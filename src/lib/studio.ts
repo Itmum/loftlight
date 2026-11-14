@@ -53,8 +53,10 @@ export type Studio = {
   overview: string;
   ownerName?: string;
   ownerEmail?: string;
+  OwnerImage: string;
   rating?: number;
   createdAt?: string;
 };
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+export const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";

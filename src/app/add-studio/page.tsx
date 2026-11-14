@@ -198,6 +198,7 @@ const AddStudioPage = () => {
       overview: form.overview.trim(),
       ownerName: user?.name,
       ownerEmail: user?.email,
+      OwnerImage: user?.image,
     };
 
     setSaving(true);

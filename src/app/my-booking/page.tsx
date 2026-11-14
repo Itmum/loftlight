@@ -1,3 +1,4 @@
+import CancelBooking from "@/components/cancelbooking";
 import DeleteStudioDialog from "@/components/deleteStudioDialog";
 import { StudioCard } from "@/components/studio-card";
 import { Button } from "@/components/ui/button";
@@ -24,11 +25,11 @@ export default async function MyBookingPgae() {
         <h1 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           My studio listings
         </h1>
-        <Button className="rounded-full bg-[#a34739] w-48 px-2 py-2 font-medium text-white hover:bg-[#a34739]/90">
+        {/* <Button className="rounded-full bg-[#a34739] w-48 px-2 py-2 font-medium text-white hover:bg-[#a34739]/90">
           <Link href="/add-studio" className="flex justify-center items-center">
             <Plus className="mr-1.5 size-4" /> Add studio
           </Link>
-        </Button>
+        </Button> */}
       </div>
 
       {/* Table Container wrapped in a card box */}
@@ -39,6 +40,7 @@ export default async function MyBookingPgae() {
               <th className="py-4 px-6">Studio</th>
               <th className="py-4 px-6">Category</th>
               <th className="py-4 px-6">Rate</th>
+              <th className="py-4 px-6">Event Date</th>
               <th className="py-4 px-6 text-right"></th>
             </tr>
           </thead>
@@ -83,10 +85,14 @@ export default async function MyBookingPgae() {
                     ${studio.hourlyRate}/hr
                   </td>
 
+                  <td className="py-4 px-6 font-medium text-foreground">
+                    {studio.eventDate}
+                  </td>
+
                   {/* Actions (Update & Delete) */}
                   <td className="py-4 px-6 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <DeleteStudioDialog id={studio._id}></DeleteStudioDialog>
+                      <CancelBooking id={studio._id}></CancelBooking>
                     </div>
                   </td>
                 </tr>
