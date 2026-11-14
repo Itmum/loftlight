@@ -31,7 +31,7 @@ const navLinks = [
 
 // The links inside the logged-in dropdown (from your brief)
 const userLinks = [
-  { href: "/dashboard", label: "Dashboard" },
+  // { href: "/dashboard", label: "Dashboard" },
   { href: "/add-studio", label: "Add New Studio" },
   { href: "/my-listing", label: "My Studio Listings" },
   { href: "/my-booking", label: "My Bookings" },

@@ -2,14 +2,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, MapPin, Star } from "lucide-react";
 import { StudioGallery } from "@/components/studio-gallery";
-import { LinkButton } from "@/components/link-button";
-import { API_URL, type Studio } from "@/lib/studio";
+import { type Studio } from "@/lib/studio";
 import BookingCard from "@/components/booking/bookingCard";
 
 async function loadStudio(id: string): Promise<Studio> {
-  const res = await fetch(`${API_URL}/all-studios/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/all-studios/${id}`,
+    {
+      cache: "no-store",
+    },
+  );
   if (!res.ok) {
     notFound();
   }

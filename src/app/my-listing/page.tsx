@@ -12,7 +12,7 @@ export default async function MyListingsPage() {
   });
   const user = session?.user;
   const res = await fetch(
-    `http://localhost:8000/all-studios/owner/${user?.email}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/all-studios/owner/${user?.email}`,
   );
   const data = await res.json();
   //   console.log(data);

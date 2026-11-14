@@ -4,7 +4,9 @@ import { AboutSection } from "@/components/about-section";
 import FeaturedStudios from "@/components/featured-studios";
 
 export default async function Home() {
-  const res = await fetch("http://localhost:8000/all-studios");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/all-studios`, {
+    cache: "no-cache",
+  });
   const data = res.json();
   console.log(data);
   return (

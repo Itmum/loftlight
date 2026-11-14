@@ -3,7 +3,7 @@ import { StudioExplorer } from "@/components/studio-explorer";
 import { API_URL, type Studio } from "@/lib/studio";
 
 async function loadStudios(): Promise<Studio[]> {
-  const res = await fetch(`${API_URL}/all-studios`, { cache: "no-store" });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/all-studios`, { cache: "no-store" });
   if (!res.ok) {
     throw new Error("Failed to fetch studios");
   }
