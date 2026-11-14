@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { authClient } from "@/lib/auth-client";
 import { StudioData } from "@/lib/studio";
 import { Loader2, Plus, X } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -29,7 +30,8 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
 // TODO: replace with the BetterAuth session once login is connected:
 // const { data: session } = authClient.useSession();
-const DEMO_HOST = { name: "Demo Host Name", email: "demohost@gmail.com" };
+// const user = session?.user;
+// const DEMO_HOST = { name: "Demo Host Name", email: "demohost@gmail.com" };
 
 const CATEGORIES = [
   "Photo Studio",
@@ -133,6 +135,8 @@ const FieldError = ({ message }: { message?: string }) =>
 
 const AddStudioPage = () => {
   const router = useRouter();
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   const [form, setForm] = useState<StudioData>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
@@ -192,8 +196,8 @@ const AddStudioPage = () => {
       images: [...new Set(form.images.map((u) => u.trim()).filter(Boolean))],
       amenities: form.amenities,
       overview: form.overview.trim(),
-      ownerName: DEMO_HOST.name,
-      ownerEmail: DEMO_HOST.email,
+      ownerName: user?.name,
+      ownerEmail: user?.email,
     };
 
     setSaving(true);
@@ -460,7 +464,7 @@ const AddStudioPage = () => {
               <Label htmlFor="host-name">Host name</Label>
               <Input
                 id="host-name"
-                value={DEMO_HOST.name}
+                value={user?.name ?? ""}
                 readOnly
                 className="bg-muted"
               />
@@ -469,7 +473,7 @@ const AddStudioPage = () => {
               <Label htmlFor="host-email">Host email</Label>
               <Input
                 id="host-email"
-                value={DEMO_HOST.email}
+                value={user?.email ?? ""}
                 readOnly
                 className="bg-muted"
               />
