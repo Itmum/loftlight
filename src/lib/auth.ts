@@ -33,7 +33,7 @@ const client = new MongoClient(process.env.MONGODB_URI as string, {
 // Tells Vercel to close idle connections before it pauses the server
 attachDatabasePool(client);
 
-const db = client.db("loftlight");
+export const db = client.db("loftlight");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {
