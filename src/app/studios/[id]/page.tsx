@@ -4,9 +4,12 @@ import { ArrowLeft, MapPin, Star } from "lucide-react";
 import { StudioGallery } from "@/components/studio-gallery";
 import { LinkButton } from "@/components/link-button";
 import { API_URL, type Studio } from "@/lib/studio";
+import BookingCard from "@/components/booking/bookingCard";
 
 async function loadStudio(id: string): Promise<Studio> {
-  const res = await fetch(`${API_URL}/all-studios/${id}`, { cache: "no-store" });
+  const res = await fetch(`${API_URL}/all-studios/${id}`, {
+    cache: "no-store",
+  });
   if (!res.ok) {
     notFound();
   }
@@ -113,25 +116,7 @@ export default async function StudioDetailPage({
           </div>
 
           {/* Sticky booking card */}
-          <aside className="lg:sticky lg:top-10">
-            <div className="rounded-3xl bg-card p-6 ring-1 ring-foreground/10">
-              <p className="font-serif text-4xl font-bold text-primary">
-                ${studio.hourlyRate}
-                <span className="font-sans text-base font-normal text-muted-foreground">
-                  {" "}
-                  / hr
-                </span>
-              </p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Security deposit ${studio.deposit}, refunded after your
-                session.
-              </p>
-              {/* TODO: point at the booking flow once it exists */}
-              <LinkButton href="#" className="mt-5 h-12 w-full text-sm font-semibold">
-                Book Workspace Now
-              </LinkButton>
-            </div>
-          </aside>
+          <BookingCard studio={studio}></BookingCard>
         </div>
       </div>
     </section>

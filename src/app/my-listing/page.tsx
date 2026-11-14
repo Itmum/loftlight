@@ -1,12 +1,20 @@
 import DeleteStudioDialog from "@/components/deleteStudioDialog";
 import { StudioCard } from "@/components/studio-card";
 import { Button } from "@/components/ui/button";
+import { auth } from "@/lib/auth";
 import { Studio } from "@/lib/studio";
 import { ExternalLink, Link2, Plus } from "lucide-react";
+import { headers } from "next/headers";
 import Link from "next/link";
 
 export default async function MyListingsPage() {
-  const res = await fetch("http://localhost:8000/all-studios");
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const user = session?.user;
+  const res = await fetch(
+    `http://localhost:8000/all-studios/owner/${user?.email}`,
+  );
   const data = await res.json();
   //   console.log(data);
 

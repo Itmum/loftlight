@@ -34,7 +34,7 @@ const userLinks = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/add-studio", label: "Add New Studio" },
   { href: "/my-listing", label: "My Studio Listings" },
-  { href: "/my-bookings", label: "My Bookings" },
+  { href: "/my-booking", label: "My Bookings" },
 ] as const;
 
 const pillClasses = "h-9 rounded-full px-4 text-sm font-semibold";
