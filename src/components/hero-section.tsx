@@ -96,7 +96,7 @@ export function HeroSection() {
                     <p className="text-xs font-bold tracking-[0.18em] text-primary uppercase">
                       {eyebrow}
                     </p>
-                    <TitleTag className="mt-6 font-serif text-5xl leading-[1.05] font-bold tracking-tight text-card-foreground sm:text-6xl xl:text-[4.25rem]">
+                    <TitleTag className="mt-6 font-serif text-4xl leading-[1.05] font-bold tracking-tight text-card-foreground sm:text-5xl md:text-6xl xl:text-[4.25rem]">
                       {slide.title}
                     </TitleTag>
                     <p className="mt-6 max-w-md text-lg text-muted-foreground">

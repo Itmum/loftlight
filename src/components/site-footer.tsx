@@ -81,7 +81,7 @@ function NewsletterForm() {
         required
         placeholder="you@email.com"
         aria-label="Email address"
-        className="h-11 w-full min-w-72 rounded-full border-transparent bg-foreground px-5 text-background placeholder:text-background/50 dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
+        className="h-11 w-full rounded-full border-transparent bg-foreground px-5 text-background placeholder:text-background/50 dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
       />
       <Button type="submit" className="h-11 rounded-full px-6 text-sm font-semibold">
         Subscribe
