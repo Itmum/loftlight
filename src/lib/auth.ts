@@ -43,7 +43,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 6, // your form allows 6, BetterAuth's default is 8
-    autoSignIn: false, // after signup, go to the Login page (your brief)
+    // autoSignIn: false, // after signup, go to the Login page (your brief)
   },
 
   socialProviders: {
