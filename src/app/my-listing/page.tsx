@@ -1,4 +1,5 @@
 import DeleteStudioDialog from "@/components/deleteStudioDialog";
+import { LinkButton } from "@/components/link-button";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
 import { Studio } from "@/lib/studio";
@@ -24,11 +25,12 @@ export default async function MyListingsPage() {
         <h1 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           My studio listings
         </h1>
-        <Button className="w-full rounded-full bg-[#a34739] px-2 py-2 font-medium text-white hover:bg-[#a34739]/90 sm:w-48">
-          <Link href="/add-studio" className="flex justify-center items-center">
-            <Plus className="mr-1.5 size-4" /> Add studio
-          </Link>
-        </Button>
+        <LinkButton
+          href="/add-studio"
+          className="w-full rounded-full bg-[#a34739] px-2 py-2 font-medium text-white hover:bg-[#a34739]/90 sm:w-48 flex justify-center items-center"
+        >
+          <Plus className="mr-1.5 size-4" /> Add studio
+        </LinkButton>
       </div>
 
       {data.length === 0 ? (
@@ -73,13 +75,14 @@ export default async function MyListingsPage() {
                 </div>
 
                 <div className="mt-4 flex items-center justify-end gap-2">
-                  <Button
+                  <LinkButton
                     variant="outline"
                     size="sm"
                     className="rounded-full border-foreground/20 px-4 text-xs font-medium"
+                    href={`/update-studio/${studio._id}`}
                   >
-                    <Link href={`/update-studio/${studio._id}`}>Update</Link>
-                  </Button>
+                    Update
+                  </LinkButton>
                   <DeleteStudioDialog id={studio._id}></DeleteStudioDialog>
                 </div>
               </div>
@@ -133,15 +136,14 @@ export default async function MyListingsPage() {
                     {/* Actions (Update & Delete) */}
                     <td className="py-4 px-6 text-right">
                       <div className="flex items-center justify-end gap-2">
-                        <Button
+                        <LinkButton
                           variant="outline"
                           size="sm"
                           className="rounded-full border-foreground/20 px-4 text-xs font-medium"
+                          href={`/update-studio/${studio._id}`}
                         >
-                          <Link href={`/update-studio/${studio._id}`}>
-                            Update
-                          </Link>
-                        </Button>
+                          Update
+                        </LinkButton>
 
                         <DeleteStudioDialog
                           id={studio._id}

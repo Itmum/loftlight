@@ -5,7 +5,7 @@ import { SiteLogo } from "@/components/site-logo";
 
 const exploreLinks = [
   { href: "/", label: "Home" },
-  { href: "#studios", label: "Studios" },
+  { href: "/explore-studios", label: "Studios" },
   { href: "#how-it-works", label: "How It Works" },
   { href: "#about", label: "About" },
 ] as const;
@@ -52,20 +52,45 @@ function FooterLinks({
 function SocialIcons() {
   return (
     <div className="mt-6 flex items-center gap-4">
-      <a href="#" aria-label="X (Twitter)" className="text-foreground transition-colors hover:text-primary">
-        <svg viewBox="0 0 24 24" className="size-5 fill-current" aria-hidden="true">
+      <a
+        href="#"
+        aria-label="X (Twitter)"
+        className="text-foreground transition-colors hover:text-primary"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          className="size-5 fill-current"
+          aria-hidden="true"
+        >
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
         </svg>
       </a>
-      <a href="#" aria-label="Instagram" className="text-foreground transition-colors hover:text-primary">
-        <svg viewBox="0 0 24 24" className="size-5 fill-none stroke-current" strokeWidth="2" aria-hidden="true">
+      <a
+        href="#"
+        aria-label="Instagram"
+        className="text-foreground transition-colors hover:text-primary"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          className="size-5 fill-none stroke-current"
+          strokeWidth="2"
+          aria-hidden="true"
+        >
           <rect x="2" y="2" width="20" height="20" rx="6" />
           <circle cx="12" cy="12" r="4.5" />
           <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none" />
         </svg>
       </a>
-      <a href="#" aria-label="YouTube" className="text-foreground transition-colors hover:text-primary">
-        <svg viewBox="0 0 24 24" className="size-5 fill-current" aria-hidden="true">
+      <a
+        href="#"
+        aria-label="YouTube"
+        className="text-foreground transition-colors hover:text-primary"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          className="size-5 fill-current"
+          aria-hidden="true"
+        >
           <path d="M8 5.5v13l11-6.5z" />
         </svg>
       </a>
@@ -83,7 +108,10 @@ function NewsletterForm() {
         aria-label="Email address"
         className="h-11 w-full rounded-full border-transparent bg-foreground px-5 text-background placeholder:text-background/50 dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
       />
-      <Button type="submit" className="h-11 rounded-full px-6 text-sm font-semibold">
+      <Button
+        type="submit"
+        className="h-11 rounded-full px-6 text-sm font-semibold"
+      >
         Subscribe
       </Button>
     </form>
@@ -106,7 +134,10 @@ export function SiteFooter() {
           <FooterLinks heading="Explore" links={exploreLinks} />
           <FooterLinks
             heading="Categories"
-            links={categoryLinks.map((label) => ({ href: "#studios", label }))}
+            links={categoryLinks.map((label) => ({
+              href: "/explore-studios",
+              label,
+            }))}
           />
           <div>
             <FooterHeading>Newsletter</FooterHeading>

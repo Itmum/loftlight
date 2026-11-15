@@ -7,6 +7,7 @@ import { StudioCard } from "@/components/studio-card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Studio } from "@/lib/studio";
+import { LinkButton } from "./link-button";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -50,13 +51,14 @@ export default function FeaturedStudios() {
         <h2 className="font-serif text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
           Featured studios
         </h2>
-        <Button
+
+        <LinkButton
           variant="outline"
-          //   asChild
           className="rounded-full border-foreground/25 px-6 font-medium transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
+          href="/explore-studios"
         >
-          <Link href="/studios">See all</Link>
-        </Button>
+          See all
+        </LinkButton>
       </div>
 
       {/* Loading Skeletons */}

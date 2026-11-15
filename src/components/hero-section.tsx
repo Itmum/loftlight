@@ -60,7 +60,7 @@ function SlideIndicators({
             "rounded-full transition-all",
             index === current
               ? "h-2 w-6 bg-primary"
-              : "size-2 bg-muted-foreground/40 hover:bg-muted-foreground/60"
+              : "size-2 bg-muted-foreground/40 hover:bg-muted-foreground/60",
           )}
         />
       ))}
@@ -104,13 +104,13 @@ export function HeroSection() {
                     </p>
                     <div className="mt-8 flex flex-wrap items-center gap-3">
                       <LinkButton
-                        href="#studios"
+                        href="/explore-studios"
                         className="h-11 rounded-full px-6 text-sm font-semibold"
                       >
                         Explore Studios
                       </LinkButton>
                       <LinkButton
-                        href="#host"
+                        href="/add-studio"
                         variant="outline"
                         className="h-11 rounded-full border-card-foreground/60 bg-transparent px-6 text-sm font-semibold text-card-foreground hover:border-card-foreground hover:bg-card-foreground/10 hover:text-card-foreground dark:border-card-foreground/60 dark:bg-transparent dark:text-card-foreground dark:hover:bg-card-foreground/10"
                       >
